@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .cpc-calculator {
+            background-color: #041E42;
+            color: #fff;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        .cpc-calculator input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        .cpc-calculator button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #fff;
+            color: #041E42;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cpc-calculator button:hover {
+            background-color: #f8f8f8;
+        }
+        .cpc-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cpc-calculator">
+        <input type="number" id="cost" placeholder="Total Cost" min="0" step="0.01" required>
+        <input type="number" id="clicks" placeholder="Number of Clicks" min="1" step="1" required>
+        <button onclick="calculateCPC()">Calculate CPC</button>
+        <div id="cpc" class="cpc-result"></div>
+    </div>
+    <script>
+        function calculateCPC() {
+            var cost = document.getElementById('cost').value;
+            var clicks = document.getElementById('clicks').value;
+            var cpc;
+
+            if (cost && clicks && clicks > 0) {
+                cpc = (cost / clicks).toFixed(2);
+                document.getElementById('cpc').innerHTML = "Cost Per Click (CPC): $" + cpc;
+            } else {
+                document.getElementById('cpc').innerHTML = "Please input valid numbers.";
+            }
+        }
+    </script>
+</body>
+</html>
