@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .ppc-calculator {
+      background-color: #041E42;
+      color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .ppc-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .ppc-calculator button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #041E42;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .ppc-calculator button:hover {
+      background-color: #f8f8f8;
+    }
+    .ppc-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ppc-calculator">
+
+    <input type="number" id="targetConversions" placeholder="Target Conversions" min="0" step="1" required>
+    <input type="number" id="conversionRate" placeholder="Conversion Rate (%)" min="0" max="100" step="0.01" required>
+    <input type="number" id="cpc" placeholder="Cost Per Click" min="0" step="0.01" required>
+    <button onclick="calculatePPCBudget()">Calculate PPC Budget</button>
+    <div id="ppcResult" class="ppc-result"></div>
+  </div>
+  <script>
+    function calculatePPCBudget() {
+      var targetConversions = document.getElementById('targetConversions').value;
+      var conversionRate = document.getElementById('conversionRate').value / 100;
+      var cpc = document.getElementById('cpc').value;
+      var budget = (targetConversions / conversionRate) * cpc;
+      document.getElementById('ppcResult').innerHTML = 'Required PPC Budget: $' + budget.toFixed(2);
+    }
+  </script>
+</body>
+</html>
