@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .margin-calculator {
+      background-color: #041E42;
+      color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .margin-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .margin-calculator button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #041E42;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .margin-calculator button:hover {
+      background-color: #f8f8f8;
+    }
+    .margin-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="margin-calculator">
+    <input type="number" id="costPrice" placeholder="Cost Price" min="0" step="0.01" required>
+    <input type="number" id="sellingPrice" placeholder="Selling Price" min="0" step="0.01" required>
+    <button onclick="calculateMargin()">Calculate Margin</button>
+    <div id="marginResult" class="margin-result"></div>
+  </div>
+  <script>
+    function calculateMargin() {
+      var costPrice = document.getElementById('costPrice').value;
+      var sellingPrice = document.getElementById('sellingPrice').value;
+      var margin = ((sellingPrice - costPrice) / sellingPrice) * 100;
+      document.getElementById('marginResult').innerHTML = 'Sales Margin: ' + margin.toFixed(2) + '%';
+    }
+  </script>
+</body>
+</html>
