@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .cltv-calculator {
+      background-color: #041E42;
+      color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .cltv-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .cltv-calculator button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #041E42;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cltv-calculator button:hover {
+      background-color: #f8f8f8;
+    }
+    .cltv-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cltv-calculator">
+
+    <input type="number" id="avgPurchaseValue" placeholder="Average Purchase Value" min="0" step="0.01" required>
+    <input type="number" id="purchaseFrequency" placeholder="Purchase Frequency" min="0" step="0.01" required>
+    <input type="number" id="customerLifespan" placeholder="Customer Lifespan (years)" min="0" step="0.01" required>
+    <button onclick="calculateCLTV()">Calculate CLTV</button>
+    <div id="cltvResult" class="cltv-result"></div>
+  </div>
+  <script>
+    function calculateCLTV() {
+      var avgPurchaseValue = document.getElementById('avgPurchaseValue').value;
+      var purchaseFrequency = document.getElementById('purchaseFrequency').value;
+      var customerLifespan = document.getElementById('customerLifespan').value;
+      var cltv = avgPurchaseValue * purchaseFrequency * customerLifespan;
+      document.getElementById('cltvResult').innerHTML = 'Customer Lifetime Value: $' + cltv.toFixed(2);
+    }
+  </script>
+</body>
+</html>
