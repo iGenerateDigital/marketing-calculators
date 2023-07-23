@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROAS Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #041E42;
+      color: #ffffff;
+    }
+
+    .calculator {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #041E42;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .calculator label,
+    .calculator input,
+    .calculator button {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    .calculator label {
+      font-weight: bold;
+    }
+
+    .calculator input {
+      background-color: #ffffff;
+    }
+
+    .calculator button {
+      background-color: #ffffff;
+      color: #041E42;
+      cursor: pointer;
+    }
+
+    .calculator button:hover {
+      background-color: #041E42;
+      color: #ffffff;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <input type="number" id="adSpend" placeholder="Enter ad spend" required>
+    <input type="number" id="revenue" placeholder="Enter revenue" required>
+    <button onclick="calculateROAS()">Calculate ROAS</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateROAS() {
+      const adSpend = parseFloat(document.getElementById('adSpend').value);
+      const revenue = parseFloat(document.getElementById('revenue').value);
+
+      if (isNaN(adSpend) || isNaN(revenue) || adSpend < 0 || revenue < 0) {
+        document.getElementById('result').innerText = 'Please enter valid positive numbers.';
+        return;
+      }
+
+      const roas = (revenue / adSpend).toFixed(2);
+      document.getElementById('result').innerText = `ROAS: ${roas}`;
+    }
+  </script>
+</body>
+
+</html>
