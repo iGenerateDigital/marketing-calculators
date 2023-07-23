@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .cpm-calculator {
+            background-color: #041E42;
+            color: #fff;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        .cpm-calculator input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        .cpm-calculator button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #fff;
+            color: #041E42;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cpm-calculator button:hover {
+            background-color: #f8f8f8;
+        }
+        .cpm-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cpm-calculator">
+        <input type="number" id="adSpend2" placeholder="Total Ad Spend" min="0" step="0.01" required>
+        <input type="number" id="numImpressions" placeholder="Number of Impressions" min="1" step="1" required>
+        <button onclick="calculateCPM()">Calculate CPM</button>
+        <div id="cpmResult" class="cpm-result"></div>
+    </div>
+    <script>
+        function calculateCPM() {
+            var adSpend2 = document.getElementById('adSpend2').value;
+            var numImpressions = document.getElementById('numImpressions').value;
+            var cpm;
+
+            if (adSpend2 && numImpressions && numImpressions > 0) {
+                cpm = ((adSpend2 / numImpressions) * 1000).toFixed(2);
+                document.getElementById('cpmResult').innerHTML = "Cost Per Mille (CPM): $" + cpm;
+            } else {
+                document.getElementById('cpmResult').innerHTML = "Please input valid numbers.";
+            }
+        }
+    </script>
+</body>
+</html>
