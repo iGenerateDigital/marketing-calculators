@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .cac-calculator {
+      background-color: #041E42;
+      color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .cac-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .cac-calculator button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #041E42;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cac-calculator button:hover {
+      background-color: #f8f8f8;
+    }
+    .cac-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cac-calculator">
+    <input type="number" id="marketingSpend" placeholder="Total Marketing Spend" min="0" step="0.01" required>
+    <input type="number" id="newCustomers" placeholder="Number of New Customers Acquired" min="1" step="1" required>
+    <button onclick="calculateCAC()">Calculate CAC</button>
+    <div id="cacResult" class="cac-result"></div>
+  </div>
+  <script>
+    function calculateCAC() {
+      var marketingSpend = document.getElementById('marketingSpend').value;
+      var newCustomers = document.getElementById('newCustomers').value;
+      var cac = marketingSpend / newCustomers;
+      document.getElementById('cacResult').innerHTML = 'Customer Acquisition Cost: $' + cac.toFixed(2);
+    }
+  </script>
+</body>
+</html>
