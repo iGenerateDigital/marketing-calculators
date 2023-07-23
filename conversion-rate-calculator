@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .conversion-calculator {
+      background-color: #041E42;
+      color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .conversion-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .conversion-calculator button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #041E42;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .conversion-calculator button:hover {
+      background-color: #f8f8f8;
+    }
+    .conversion-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="conversion-calculator">
+    <input type="number" id="numConversions" placeholder="Number of Conversions" min="0" step="1" required>
+    <input type="number" id="numVisitors" placeholder="Number of Visitors" min="1" step="1" required>
+    <button onclick="calculateConversionRate()">Calculate Conversion Rate</button>
+    <div id="conversionResult" class="conversion-result"></div>
+  </div>
+  <script>
+    function calculateConversionRate() {
+      var numConversions = document.getElementById('numConversions').value;
+      var numVisitors = document.getElementById('numVisitors').value;
+      var conversionRate = (numConversions / numVisitors) * 100;
+      document.getElementById('conversionResult').innerHTML = 'Conversion Rate: ' + conversionRate.toFixed(2) + '%';
+    }
+  </script>
+</body>
+</html>
