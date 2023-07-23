@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .roi-calculator {
+      background-color: #041E42;
+      color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .roi-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+    }
+    .roi-calculator button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #fff;
+      color: #041E42;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .roi-calculator button:hover {
+      background-color: #f8f8f8;
+    }
+    .roi-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="roi-calculator">
+    <input type="number" id="numSent" placeholder="Number of Emails Sent" min="0" step="1" required>
+    <input type="number" id="numResponses" placeholder="Number of Responses" min="0" step="1" required>
+    <input type="number" id="totalSales" placeholder="Total Sales From Emails" min="0" step="0.01" required>
+    <input type="number" id="totalCost" placeholder="Total Cost of Campaign" min="0" step="0.01" required>
+    <button onclick="calculateROI()">Calculate ROI</button>
+    <div id="roiResult" class="roi-result"></div>
+  </div>
+  <script>
+    function calculateROI() {
+      var numSent = document.getElementById('numSent').value;
+      var numResponses = document.getElementById('numResponses').value;
+      var totalSales = document.getElementById('totalSales').value;
+      var totalCost = document.getElementById('totalCost').value;
+      var roi = ((totalSales - totalCost) / totalCost) * 100;
+      document.getElementById('roiResult').innerHTML = 'Email Marketing ROI: ' + roi.toFixed(2) + '%';
+    }
+  </script>
+</body>
+</html>
