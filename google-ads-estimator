@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-field {
+            border: 1px solid #fff;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .form-field input,
+        .form-field select {
+            margin-left: 10px; /* adding some spacing between the label and the input/select */
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+    <script>
+        function updatePrice() {
+            var campaigns = document.getElementById("campaigns").value;
+            var additionalBudget = document.getElementById("additionalBudget").value;
+            var crmOption = document.getElementById("crmOption").checked;
+            var packagePrice;
+
+            if (campaigns <= 5) {
+                packagePrice = 1500;
+            } else if (campaigns <= 10) {
+                packagePrice = 2000;
+            } else {
+                packagePrice = 2500;
+            }
+
+            var crmCost = crmOption ? 60 : 0;
+            var totalCost = packagePrice + parseInt(additionalBudget) + crmCost;
+
+            document.getElementById("packagePrice").value = "$" + packagePrice;
+            document.getElementById("totalCost").value = "$" + totalCost;
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-field">
+            <label for="campaigns">Number of Campaigns:</label>
+            <input type="number" id="campaigns" name="campaigns" min="1" oninput="updatePrice()" required>
+        </div>
+        <div class="form-field">
+            <label for="additionalBudget">Campaign Budget:</label>
+            <input type="number" id="additionalBudget" name="additionalBudget" min="0" oninput="updatePrice()" required>
+        </div>
+        <div class="form-field">
+            <label for="crmOption">Include CRM ($60/month):</label>
+            <input type="checkbox" id="crmOption" name="crmOption" onchange="updatePrice()">
+        </div>
+        <div class="form-field">
+            <label for="packagePrice">Assigned Package Price:</label>
+            <input type="text" id="packagePrice" name="packagePrice" readonly>
+        </div>
+        <div class="form-field">
+            <label for="totalCost">Total Monthly Cost:</label>
+            <input type="text" id="totalCost" name="totalCost" readonly>
+        </div>
+    </div>
+</body>
+</html>
